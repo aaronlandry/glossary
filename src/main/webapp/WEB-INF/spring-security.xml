@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+    
+    <!-- AUTHORIZATION/AUTHENTICATION -->
+    
+    <!-- ALLOW FOR ANNOTATION-BASED SECURITY -->
+    <global-method-security secured-annotations="enabled" jsr250-annotations="enabled"/>
+    
+    <!-- GENERAL SETTINGS -->
+    <http auto-config="true" use-expressions="true" entry-point-ref="authenticationEntryPoint">
+        <intercept-url pattern="/login.form*" access="permitAll"/>
+        <intercept-url pattern="/login/failure.form*" access="permitAll"/>
+        <intercept-url pattern="/javascript/**" access="permitAll"/>
+        <intercept-url pattern="/images/**" access="permitAll"/>
+        <intercept-url pattern="/styles/**" access="permitAll"/>
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <access-denied-handler error-page="/denied.do"/>
+        <form-login login-page="/login.form" default-target-url="/glossary/index.do"
+            authentication-success-handler-ref="authSuccessHandler"
+            authentication-failure-handler-ref="authFailureHandler" />
+        <logout invalidate-session="true" logout-success-url="/logout/success.form"/>
+        <!--
+        <intercept-url pattern="/**" access="permitAll"/>
+        <csrf request-matcher-ref="csrfSecurityRequestMatcher" />
+        <intercept-url pattern="/login.form*" access="permitAll"/>
+        <intercept-url pattern="/TestDrive.do" access="permitAll"/>
+        <intercept-url pattern="/RetrievePassword.form" access="permitAll"/>
+        <intercept-url pattern="/SubmitRetrievePassword.do" access="permitAll"/>
+        <intercept-url pattern="/EnvironmentStatus.do" access="permitAll"/>
+        <intercept-url pattern="/tokenized/**" access="permitAll"/>
+        <intercept-url pattern="/Tokenized/**" access="permitAll"/>
+        <intercept-url pattern="/Registration/**" access="permitAll"/>
+        <intercept-url pattern="/Enrollment/**" access="permitAll"/>
+        <intercept-url pattern="/Kaptcha/**" access="permitAll"/>
+        <intercept-url pattern="/denied.do*" access="permitAll"/>
+        <intercept-url pattern="/logout/success.form*" access="permitAll"/>
+        <intercept-url pattern="/px_initialize.do*" access="permitAll"/>
+        <intercept-url pattern="/login/failure.form*" access="permitAll"/>
+        <intercept-url pattern="/javascript/**" access="permitAll"/>
+        <intercept-url pattern="/images/**" access="permitAll"/>
+        <intercept-url pattern="/unsecured/**" access="permitAll"/>
+        <intercept-url pattern="/styles/**" access="permitAll"/>
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <access-denied-handler error-page="/denied.do"/>
+        <form-login login-page="/login.form" default-target-url="/index.do"
+            authentication-success-handler-ref="authSuccessHandler"
+            authentication-failure-handler-ref="authFailureHandler" />
+        <logout invalidate-session="true" logout-success-url="/logout/success.form"/>
+        -->
+    </http>
+    
+    <!-- CUSTOMIZE AUTHENTICATION HANDLERS TO ALLOW FOR DATABASE LOOKUP -->
+    <authentication-manager>
+        <authentication-provider user-service-ref="userDetailsService">
+            <!-- CALLS THE BCryptEncoder VIA PasswordEncryptionUtils  -->
+            <password-encoder ref="basicPasswordEncoder"/>
+        </authentication-provider>
+    </authentication-manager>
+    
+    <!-- BEAN DECLARATION, WHERE AUTO-DETECTION DOES NOT WORK -->
+    <beans:bean id="daoAuthenticationProvider"
+            class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="userDetailsService"/>
+        <beans:property name="passwordEncoder" ref="basicPasswordEncoder"/>
+    </beans:bean>
+    <beans:bean id="authenticationManager"
+            class="org.springframework.security.authentication.ProviderManager">
+        <beans:property name="providers">
+            <beans:list>
+                <beans:ref bean="daoAuthenticationProvider" />
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+    
+    <!-- DO STUFF ON LOGIN, LIKE LOGGING -->
+    <beans:bean id="requestCacheAwareFilter"
+      class="org.springframework.security.web.savedrequest.RequestCacheAwareFilter">
+        <beans:constructor-arg ref="requestCache"/>
+    </beans:bean>
+
+    <beans:bean id="requestCache" class="org.springframework.security.web.savedrequest.HttpSessionRequestCache"/>
+    <beans:bean id="authSuccessHandler" class="com.superiad.glossary.authentication.AuthenticationSuccessHandlerImpl">
+        <beans:property name="useReferer" value="true"/>
+        <beans:property name="requestCache" ref="requestCache" />
+    </beans:bean>
+    <beans:bean id="authFailureHandler" class="com.superiad.glossary.authentication.AuthenticationFailureHandlerImpl" />
+    <beans:bean id="userDetailsService" class="com.superiad.glossary.authentication.AuthenticationLookupService" />
+    <!-- MANAGE LOGOUT WITH AJAX CALLS  -->
+    <beans:bean id="authenticationEntryPoint"
+            class="com.superiad.glossary.authentication.AjaxAwareAuthenticationEntryPoint">
+        <beans:constructor-arg name="loginUrl" value="/login.form"/>
+    </beans:bean>
+    <!-- FOR HASHING AND SALTING USER PASSWORDS -->
+    <beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <!-- CSRF EXCLUSIONS 
+    <beans:bean id="csrfSecurityRequestMatcher" class="com.superiad.glossary.environment.CsrfSecurityRequestMatcher"/>
+    -->
+    
+</beans:beans>

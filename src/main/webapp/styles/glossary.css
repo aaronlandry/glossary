@@ -1,0 +1,88 @@
+/* 
+    Document   : glossary
+    Created on : Jun 19, 2015, 6:46:00 PM
+    Author     : Aaron
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body#glossary { width:100%;position:absolute;overflow:hidden;height:100%;padding:0%; }
+table#structure { width:100%;height:100%;padding:0px;border-spacing:0px;border-collapse:collapse; }
+table#structure tr:nth-child(2) { vertical-align:top; }
+tr#topNavElement { height:40px;background:#f5f5f5; }
+tr#topNavElement td { font-weight:bold;padding:6px;font-size:1.2em;border-bottom: solid 1px #333; }
+tr#topNavElement td button { margin-right:6px; }
+td#leftNavElement { width:400px;padding:5px;white-space:normal;padding: 6px 12px 6px 21px;background:#EDDDCB;color:#333;border-right: solid 1px #333; }
+td#leftNavElement > div { height:95%;width:410px;overflow-y:auto;position:absolute; }
+td#mainElement { padding:5px;height:100%;white-space:normal;padding: 6px 12px 6px 12px;background:#f1e9d2;color:#333; }
+td#mainElement > div { height:100%;width:100%;overflow-y:auto;position:relative; }
+
+div#innerTopNavElement { width:100%;height:100%; }
+div#nav-modes { float:left;width:40%;height:100%; }
+div#nav-center { float:left;width:15%;height:100%;font-size:1.5em;text-align:center; }
+div#nav-controls { float:right;margin-right:10px;text-align:right;width:40%;height:100%;white-space:nowrap; }
+div#nav-clear { clear:both; }
+button#add-term { margin-left:50px; }
+
+div.term { font-weight:bold;font-size:1.1em; }
+div.definition { padding-top:5px;padding-top:3px;padding-bottom:8px; }
+
+ul.letters-ul, ol.letters-ul { list-style-type: disc; margin-left:5px; padding-left:5px; }
+ul.letters-ul a, ol.letters-ul a { }
+ul.letters-ul a.selected, ol.letters-ul a.selected { font-weight:bold;font-size:1.5em;color:#669933; }
+
+ul.novels-ul, ol.novels-ul { list-style-type: disc; margin-left:5px; padding-left:5px; }
+ul.novels-ul a, ol.novels-ul a { }
+ul.novels-ul a.selected, ol.novels-ul a.selected { font-weight:bold;font-size:1.5em;color:#669933; }
+
+ul.categories-ul, ol.categories-ul { list-style-type: disc; margin-left:5px; padding-left:5px; }
+ul.categories-ul a, ol.categories-ul a { }
+ul.categories-ul a.selected, ol.categories-ul a.selected { font-weight:bold;font-size:1.5em;color:#669933; }
+
+ul.categories-ul li.indent-0 { margin-left:0px; }
+ul.categories-ul li.indent-1 { margin-left:10px; }
+ul.categories-ul li.indent-2 { margin-left:20px; }
+ul.categories-ul li.indent-3 { margin-left:30px; }
+ul.categories-ul li.indent-4 { margin-left:40px; }
+ul.categories-ul li.indent-5 { margin-left:50px; }
+ul.categories-ul li.indent-6 { margin-left:60px; }
+ul.categories-ul li.indent-7 { margin-left:70px; }
+ul.categories-ul li.indent-8 { margin-left:80px; }
+ul.categories-ul li.indent-9 { margin-left:90px; }
+
+ul.epochs-ul, ol.epochs-ul { list-style-type: disc; margin-left:5px; padding-left:5px; }
+ul.epochs-ul a, ol.epochs-ul a { }
+ul.epochs-ul a.selected, ol.epochs-ul a.selected { font-weight:bold;font-size:1.5em;color:#669933; }
+
+table#terms caption { padding-left:0px;margin-left:0px;caption-side:bottom;padding-top:10px;font-style:italic;white-space:nowrap;text-align:left; }
+
+table.form tr { vertical-align:top; }
+
+table.form tr td:nth-child(1) { padding-top:2px;white-space:normal;padding-right:5px;font-weight:bold;text-align:right; }
+table.form input[type=text], table.form select, table.form textarea { width:500px; }
+
+span.required { color:red;}
+
+table.terms-table { width:100%; }
+
+table.term-table { width:100%; }
+
+table.term-table tr { vertical-align:top; }
+
+table.term-table td.term { width:250px;font-weight:bold;font-size:1.2em; }
+
+table.term-table td.categories { padding-left:20px; }
+
+table.term-table tr.epochs { }
+
+table.term-table tr.novels { display:none; }
+
+table.term-table .description { border-bottom:dotted #333 2px; padding-bottom:8px; }
+
+div.category-select-div { display:none; }
+
+span.category-part { display:inline-block;padding:3px 6px 3px 6px;margin-right:4px;border:solid 1px #333;border-radius:8px; }
+
+span.category-part-last { color:#fff;font-weight:bold;background:#669933; }
+
+select.new-category-part { margin-right:6px; }

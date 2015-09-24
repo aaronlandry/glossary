@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+  <jsp-descriptor>
+    <keepgenerated>false</keepgenerated>
+    <debug>true</debug>
+  </jsp-descriptor>
+  <context-root>/Superiad</context-root>
+  <resource-description>
+    <res-ref-name>myDataSource</res-ref-name>
+    <jndi-name>jdbc/GlossaryApplication</jndi-name>
+  </resource-description>
+  <!--  
+  <library-ref>
+      <library-name>EclipseLink-2.4.0</library-name>
+      <specification-version>2.4.0</specification-version>
+      <implementation-version>2.4.0.v20120608-r11652</implementation-version>
+      <exact-match>true</exact-match>
+  </library-ref>
+  <container-descriptor>
+    <prefer-application-packages>
+      <package-name>org.slf4j</package-name>
+      <package-name>org.apache.commons.*</package-name>
+    </prefer-application-packages>
+    <prefer-application-resources>
+      <resource-name>org/slf4j/impl/StaticLoggerBinder.class</resource-name>
+    </prefer-application-resources>
+  </container-descriptor>
+  -->
+</weblogic-web-app>
