@@ -67,6 +67,8 @@ public class Term extends AbstractPersistable<Term, TermRepository> {
     private SuperiadDate eventDate = new SuperiadDate();
     private User creator;
     private Boolean matchLowercase = Boolean.FALSE;
+    private Boolean isYencari = Boolean.FALSE;
+    private YencariExtension yencariExtension = new YencariExtension();
 
     @Override
     public TermRepository getRepository() {
@@ -178,6 +180,29 @@ public class Term extends AbstractPersistable<Term, TermRepository> {
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
+    }
+    
+    @PropertyAlias("Is Yencari")
+    // VALIDATION
+    @NotNull(message="Is Yencari is required", groups = AllGroup.class )
+    @Convert("boolean")
+    // PERSISTENCE
+    @Column(name="isYencari",nullable=false)
+    public Boolean getIsYencari() {
+        return isYencari;
+    }
+    
+    public void setIsYencari(Boolean isYencari) {
+        this.isYencari = isYencari;
+    }
+    
+    @Embedded
+    public YencariExtension getYencariExtension() {
+        return yencariExtension;
+    }
+    
+    public void setYencariExtension(YencariExtension yencariExtension) {
+        this.yencariExtension = yencariExtension;
     }
     
     /*

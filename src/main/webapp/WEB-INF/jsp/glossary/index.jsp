@@ -168,10 +168,13 @@
                     NOVELS
                 </button>
                 <button id="add-term" class="link-button-primary link-button">
-                    ADD TERM
+                    ADD
+                </button>
+                <button id="add-yencari-term" class="link-button-primary link-button">
+                    ADD Y
                 </button>
                 <button id="manage-categories" class="link-button-primary link-button">
-                    CATEGORIES
+                    CATS
                 </button>
                 <button id="cross-reference" class="link-button-primary link-button">
                     CROSS REFERENCE

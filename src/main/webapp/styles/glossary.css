@@ -86,3 +86,5 @@ span.category-part { display:inline-block;padding:3px 6px 3px 6px;margin-right:4
 span.category-part-last { color:#fff;font-weight:bold;background:#669933; }
 
 select.new-category-part { margin-right:6px; }
+
+div.alias { padding-bottom:2px; }

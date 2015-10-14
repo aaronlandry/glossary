@@ -168,3 +168,18 @@ END;
 ALTER TABLE Terms ADD parsedDefinition CLOB;
 
 ALTER TABLE Terms add matchLowercase NUMBER(1) DEFAULT 0 CONSTRAINT TERM_NN_MATCHLC NOT NULL;
+
+ALTER TABLE Terms add isYencari NUMBER(1) DEFAULT 0 CONSTRAINT TERM_NN_ISYENCARI NOT NULL;
+ALTER TABLE Terms add firstYencourName VARCHAR(100);
+ALTER TABLE Terms add secondYencourName VARCHAR(100);
+ALTER TABLE Terms add thirdYencourName VARCHAR(100);
+ALTER TABLE Terms add firstAegeaName VARCHAR(100);
+ALTER TABLE Terms add secondAegeaBirthName VARCHAR(100);
+ALTER TABLE Terms add secondAegeaUniversityName VARCHAR(100);
+ALTER TABLE Terms add secondAegeaGreatWarName VARCHAR(100);
+ALTER TABLE Terms add sargarathName VARCHAR(100);
+ALTER TABLE Terms add aYencariName VARCHAR(100);
+ALTER TABLE Terms add superiName VARCHAR(100);
+ALTER TABLE Terms add modernName VARCHAR(100);
+ALTER TABLE Terms add chara VARCHAR(500);
+ALTER TABLE Terms add marg VARCHAR(200);
