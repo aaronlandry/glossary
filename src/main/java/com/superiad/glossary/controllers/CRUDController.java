@@ -146,7 +146,7 @@ public class CRUDController {
     public ModelAndView readTerm(HttpServletResponse response, HttpServletRequest request,
             @PathVariable("id") Long id) throws NoActiveUserException, EntityNotFoundException, IOException {
         Term term = termRepositoryImpl.findById(id);
-        ModelAndView model = new ModelAndView(term.getIsYencari()?"/glossary/read-yencari-term":"/glossary/read-term", "entity", term);
+        ModelAndView model = new ModelAndView("/glossary/read-term", "entity", term);
         List<Novel> novels = novelRepositoryImpl.findAll();
         Collections.sort(novels);
         model.addObject("novels",novels);
@@ -161,12 +161,12 @@ public class CRUDController {
     }
     
     @RequestMapping(value = "/PromptCreate/Term", method=RequestMethod.GET)
-    public ModelAndView promptCreateTerm(HttpServletResponse response, HttpServletRequest request,
-        @RequestParam("isYencari") Boolean isYencari) throws NoActiveUserException, EntityNotFoundException, IOException {
+    public ModelAndView promptCreateTerm(HttpServletResponse response, HttpServletRequest request) throws NoActiveUserException, 
+            EntityNotFoundException, IOException {
         Category defaultCategory = categoryRepositoryImpl.findById(112L);
         Term term = new Term();
         term.getCategories().add(defaultCategory);
-        ModelAndView model = new ModelAndView(isYencari?"/glossary/create-yencari-term":"/glossary/create-term", "entity", term);
+        ModelAndView model = new ModelAndView("/glossary/create-term", "entity", term);
         List<Novel> novels = novelRepositoryImpl.findAll();
         Collections.sort(novels);
         model.addObject("novels",novels);
@@ -184,7 +184,7 @@ public class CRUDController {
     public ModelAndView promptUpdateTerm(HttpServletResponse response, HttpServletRequest request,
             @PathVariable("id") Long id) throws NoActiveUserException, EntityNotFoundException, IOException {
         Term term = termRepositoryImpl.findById(id);
-        ModelAndView model = new ModelAndView(term.getIsYencari()?"/glossary/update-yencari-term":"/glossary/update-term", "entity", term);
+        ModelAndView model = new ModelAndView("/glossary/update-term", "entity", term);
         List<Novel> novels = novelRepositoryImpl.findAll();
         Collections.sort(novels);
         model.addObject("novels",novels);

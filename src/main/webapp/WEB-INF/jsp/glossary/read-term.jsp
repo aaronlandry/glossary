@@ -27,40 +27,6 @@
         </tr>
         <tr>
             <td>
-                Aliases<span class="required">*</span>:
-            </td>
-            <td class="validatable">
-                <div class='alias'>Superi: ${entity.yencariExtension.superiName}</div>
-                <div class='alias'>a'Yencari: ${entity.yencariExtension.aYencariName}</div>
-                <div class='alias'>Sargarath: ${entity.yencariExtension.sargarathName}</div>
-                <div class='alias'>First Yencour: ${entity.yencariExtension.firstYencourName}</div>
-                <div class='alias'>Second Yencour: ${entity.yencariExtension.secondYencourName}></div>
-                <div class='alias'>&AElig;gan Empire: ${entity.yencariExtension.firstAegeaName}</div>
-                <div class='alias'>Third Yencour: ${entity.yencariExtension.thirdYencourName}></div>
-                <div class='alias'>Second &AElig;gan Empire (Birth): ${entity.yencariExtension.secondAegeaBirthName}</div>
-                <div class='alias'>Second &AElig;gan Empire (Uni): ${entity.yencariExtension.secondAegeaUniversityName}</div>
-                <div class='alias'>Second &AElig;gan Empire (War): ${entity.yencariExtension.secondAegeaGreatWarName}</div>
-                <div class='alias'>Modern Name: ${entity.yencariExtension.modernName}</div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Chara<span class="required">*</span>:
-            </td>
-            <td class="validatable">
-                ${entity.yencariExtension.chara}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Marg<span class="required">*</span>:
-            </td>
-            <td class="validatable">
-                ${entity.yencariExtension.marg}
-            </td>
-        </tr>
-        <tr>
-            <td>
                 Categories:
             </td>
             <td class="validatable category-container">

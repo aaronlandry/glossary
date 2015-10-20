@@ -732,7 +732,6 @@ var NavView = Backbone.Marionette.ItemView.extend({
         'click button#show-epoch-button': 'toggleShowEpochs',
         'click button#show-novel-button': 'toggleShowNovels',
         'click button#add-term': 'addTerm',
-        'click button#add-yencari-term': 'addYencariTerm',
         'click button#manage-categories': 'manageCategories',
         'click button#cross-reference' : 'crossReference'
     },
@@ -760,13 +759,7 @@ var NavView = Backbone.Marionette.ItemView.extend({
         var callback = function(data) {
             myTerms.addTerm(new Term(data));
         };
-        submittableDialog('/Superiad/CRUD/PromptCreate/Term.do?isYencari=false','Create New Standard Term', 0, { 'callback': callback });
-    },
-    addYencariTerm: function() {
-        var callback = function(data) {
-            myTerms.addTerm(new Term(data));
-        };
-        submittableDialog('/Superiad/CRUD/PromptCreate/Term.do?isYencari=true','Create New Yencari Term', 0, { 'callback': callback });
+        submittableDialog('/Superiad/CRUD/PromptCreate/Term.do','Create New Standard Term', 0, { 'callback': callback });
     },
     toggleShowNovels: function() {
         this.toggleShowButtons(this.$el.find('div#nav-controls>button#show-novel-button'),glossary.toggleShowing(MODES.NOVEL));
